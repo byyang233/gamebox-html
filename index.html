@@ -11,21 +11,18 @@
     <link rel="stylesheet" href="css/detail.css">
     <link rel="stylesheet" href="css/detail-page.css">
     <link rel="stylesheet" href="css/library.css">
+    <link rel="stylesheet" href="css/screenshots.css">
 </head>
 <body>
     <aside class="sidebar">
         <div class="nav-item active"><i class="fa-solid fa-gamepad"></i><span class="nav-label">游戏</span></div>
     </aside>
-
     <main class="main">
         <header class="topbar"><span>GameBox</span></header>
         <section class="content">
             <div class="page active">
                 <div class="search-row">
-                    <div class="search-box">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                        <input id="gameSearch" placeholder="搜索游戏">
-                    </div>
+                    <div class="search-box"><i class="fa-solid fa-magnifying-glass"></i><input id="gameSearch" placeholder="搜索游戏"></div>
                 </div>
                 <div id="gameGrid" class="game-grid"></div>
                 <div class="library-layout">
@@ -35,7 +32,7 @@
             </div>
         </section>
     </main>
-
+    <script src="api/game-api.js"></script>
     <script src="js/storage.js"></script>
     <script src="js/theme.js"></script>
     <script src="js/library.js"></script>
