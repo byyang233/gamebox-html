@@ -1,0 +1,35 @@
+.detail-panel {
+    background: var(--card-bg);
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.detail-banner {
+    height: 260px;
+    background-size: cover;
+    background-position: center;
+}
+
+.detail-content {
+    display: flex;
+    gap: 24px;
+    padding: 24px;
+}
+
+.detail-cover {
+    width: 180px;
+    height: 260px;
+    border-radius: 12px;
+    background-size: cover;
+    background-position: center;
+}
+
+.detail-info h1 {
+    margin-top: 0;
+}
+
+.detail-actions button {
+    padding: 10px 18px;
+    border-radius: 10px;
+    cursor: pointer;
+}
