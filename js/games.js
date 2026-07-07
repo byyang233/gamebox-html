@@ -5,9 +5,16 @@ window.GameBoxGames = {
             name: '示例游戏',
             cover: '',
             background: '',
+            screenshots: [],
+            developer: '',
+            publisher: '',
+            releaseDate: '',
+            platform: [],
             type: 'Game',
             tags: [],
             description: '',
+            playTime: 0,
+            lastPlayed: '',
             status: 'ready'
         }
     ],
