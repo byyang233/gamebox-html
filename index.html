@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="css/layout.css">
     <link rel="stylesheet" href="css/games.css">
     <link rel="stylesheet" href="css/detail.css">
+    <link rel="stylesheet" href="css/library.css">
 </head>
 <body>
     <aside class="sidebar">
@@ -25,7 +26,15 @@
                         <input id="gameSearch" placeholder="搜索游戏">
                     </div>
                 </div>
+
                 <div id="gameGrid" class="game-grid"></div>
+
+                <div class="library-layout">
+                    <div id="libraryList" class="library-list"></div>
+                    <div id="libraryDetail" class="library-detail">
+                        选择游戏查看详情
+                    </div>
+                </div>
             </div>
         </section>
     </main>
@@ -33,6 +42,7 @@
     <script src="js/storage.js"></script>
     <script src="js/theme.js"></script>
     <script src="js/library.js"></script>
+    <script src="js/library-ui.js"></script>
     <script src="js/detail.js"></script>
     <script src="js/navigation.js"></script>
     <script src="js/games.js"></script>
