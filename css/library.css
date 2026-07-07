@@ -1,0 +1,30 @@
+.library-layout {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 20px;
+    height: 100%;
+}
+
+.library-list {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 12px;
+}
+
+.library-item {
+    padding: 12px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.library-item:hover,
+.library-item.active {
+    background: var(--nav-active-bg);
+}
+
+.library-detail {
+    background: var(--card-bg);
+    border-radius: 14px;
+    padding: 20px;
+}
