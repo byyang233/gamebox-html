@@ -1,0 +1,25 @@
+.screenshot-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.screenshot-item {
+    height: 110px;
+    border-radius: 10px;
+    background-size: cover;
+    background-position: center;
+}
+
+.detail-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.detail-tag {
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: var(--nav-active-bg);
+}
