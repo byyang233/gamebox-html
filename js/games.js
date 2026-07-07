@@ -13,6 +13,11 @@ window.GameBoxGames = {
     ],
 
     init() {
+        this.data.forEach(game => {
+            if (window.GameBoxLibrary) {
+                GameBoxLibrary.add(game);
+            }
+        });
         this.render(this.data);
     },
 
@@ -24,8 +29,7 @@ window.GameBoxGames = {
                     <div class="card-title">${game.name}</div>
                     <div class="card-meta">${game.type}</div>
                 </div>
-            </article>
-        `;
+            </article>`;
     },
 
     render(list) {
@@ -36,8 +40,7 @@ window.GameBoxGames = {
 
         grid.querySelectorAll('.game-card').forEach(card => {
             card.addEventListener('click', () => {
-                const id = card.dataset.id;
-                console.log('open game detail:', id);
+                GameBoxDetail?.open(card.dataset.id);
             });
         });
     }
