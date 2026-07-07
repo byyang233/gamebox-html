@@ -1,22 +1,36 @@
 window.GameBoxAPI = {
-    async getGameDetail(id) {
-        // Reserved for VNDB / IGDB / Steam adapters
-        return null;
+    config: {
+        // Replace this with the actual Vnite-compatible endpoint
+        baseURL: ''
     },
 
-    normalize(data) {
+    async request(path) {
+        if (!this.config.baseURL) {
+            return null;
+        }
+
+        const response = await fetch(this.config.baseURL + path);
+        return await response.json();
+    },
+
+    async getGameDetail(id) {
+        const data = await this.request(`/games/${id}`);
+        return data ? this.normalize(data) : null;
+    },
+
+    normalize(data = {}) {
         return {
-            id: data.id || '',
-            name: data.name || '',
-            cover: data.cover || '',
-            background: data.background || '',
+            id: data.id || data.uuid || '',
+            name: data.name || data.title || '',
+            cover: data.cover || data.image || '',
+            background: data.background || data.banner || '',
             screenshots: data.screenshots || [],
-            developer: data.developer || '',
-            publisher: data.publisher || '',
-            releaseDate: data.releaseDate || '',
-            platform: data.platform || [],
-            tags: data.tags || [],
-            description: data.description || ''
+            developer: data.developer || data.developers || '',
+            publisher: data.publisher || data.publishers || '',
+            releaseDate: data.releaseDate || data.release_date || '',
+            platform: data.platform || data.platforms || [],
+            tags: data.tags || data.genres || [],
+            description: data.description || data.intro || ''
         };
     }
 };
