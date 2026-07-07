@@ -1,0 +1,18 @@
+.game-detail {
+    background: var(--card-bg);
+    border-radius: 16px;
+    padding: 24px;
+}
+
+.detail-cover {
+    width: 220px;
+    height: 300px;
+    border-radius: 12px;
+    background-size: cover;
+    background-position: center;
+}
+
+.detail-title {
+    font-size: 28px;
+    font-weight: 700;
+}
