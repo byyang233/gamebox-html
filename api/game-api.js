@@ -1,36 +1,31 @@
 window.GameBoxAPI = {
     config: {
-        // Replace this with the actual Vnite-compatible endpoint
-        baseURL: ''
+        steamBaseURL: 'https://store.steampowered.com/api'
     },
 
-    async request(path) {
-        if (!this.config.baseURL) {
-            return null;
-        }
+    async getSteamDetail(appId) {
+        const url = `${this.config.steamBaseURL}/appdetails?appids=${appId}&l=schinese`;
+        const response = await fetch(url);
+        const result = await response.json();
 
-        const response = await fetch(this.config.baseURL + path);
-        return await response.json();
+        const data = result[appId]?.data;
+        return data ? this.normalizeSteam(data, appId) : null;
     },
 
-    async getGameDetail(id) {
-        const data = await this.request(`/games/${id}`);
-        return data ? this.normalize(data) : null;
-    },
-
-    normalize(data = {}) {
+    normalizeSteam(data, appId) {
         return {
-            id: data.id || data.uuid || '',
-            name: data.name || data.title || '',
-            cover: data.cover || data.image || '',
-            background: data.background || data.banner || '',
-            screenshots: data.screenshots || [],
-            developer: data.developer || data.developers || '',
-            publisher: data.publisher || data.publishers || '',
-            releaseDate: data.releaseDate || data.release_date || '',
-            platform: data.platform || data.platforms || [],
-            tags: data.tags || data.genres || [],
-            description: data.description || data.intro || ''
+            id: appId,
+            steamId: appId,
+            name: data.name || '',
+            cover: data.header_image || '',
+            background: data.background || '',
+            screenshots: (data.screenshots || []).map(item => item.path_full),
+            developer: data.developers || [],
+            publisher: data.publishers || [],
+            releaseDate: data.release_date?.date || '',
+            platform: Object.keys(data.platforms || {}).filter(key => data.platforms[key]),
+            tags: (data.genres || []).map(item => item.description),
+            description: data.short_description || data.about_the_game || ''
         };
     }
 };
